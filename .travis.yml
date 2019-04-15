@@ -1,0 +1,18 @@
+anguage: node_js
+node_js:
+  - "10.1"
+
+sudo: required
+
+cache:
+  directories:
+    - node_modules
+
+before_script:
+  - npm install
+
+script:
+  - npm test
+
+on:
+  branch: master
