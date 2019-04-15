@@ -12,11 +12,9 @@ cache:
   - functions/node_modules
 
 before_script:
-  - npm install firebase-tools -g
-  - cd functions && npm install && cd ..
-  - npm install
+  - ./scripts/dependencies.sh
 
 script:
-  - npm test
-  - npm run build
-  - firebase deploy --token "${FIREBASE_TOKEN}"
+  - ./scripts/functions.sh
+  - ./scripts/hosting.sh
+  - ./scripst/deploy.sh
