@@ -1,15 +1,25 @@
 language: node_js
+
 node_js:
-  - "10.1"
+  - '10.1'
 
 sudo: required
 
 cache:
   directories:
-    - node_modules
+  - node_modules
 
 before_script:
   - npm install
 
 script:
   - npm test
+  - npm run build
+
+deploy:
+  provider: firebase
+  token:
+    secure: encrypted_firebase_CI_token
+env:
+  global:
+    secure: kLBGPdMWQcs4ZZqTCRryDckmJ8RrS9nfI4ZHqnGT/xCqG0etPmWFYR/i0g5HDjjzlk3pCCI1bRfDG7yTaGdZ2eUmoH8pfbyeliUiunx/CojN/Nxgo+fnV4TlyVIBrATjsK/lX3fgrL6HWYDpdxxlwo0fNFb9J57oC5KtRNfjEjm2FVIAo/tqeYkkCI4nOwnL8D/ODSlkLe1AXOdIc3rUXqFeid2Qi4aKtWyIUL879qEv4pUY52B3CgwZ1eat9ulrRU3wIzGiJEppkSA/QflR5R3Yetk/TKkN6e4q+/CcYvx6PtlSUh6ZFyJ7rOY6i5Afx3GXaMlIjnO6hks4q8IMxjzQiUGczG+01ADVFRpPUS96dCD2EJ7HnQUvPCSfGan8LbaygkRXSTzeHVT2nyq/EmV56im5eW56TOd6Rss26imRBl6Qf6bCszoh1vNDkv2gup8Aw8zgk9/f/KATaXHegYs1QnMhQK4DYoZ5vG13Mu93mOdPSgFZ6/n3Orp2W7+dSNxQNb1NDzKOjjYY7rKIShwS8ssqvcTUtjhzRoAhdf8L5yfedFDEkREb3jgv9rUe5i9NSnueLQ7s4aipXaJ/rk0cmdyqMc3zrajD/LC8C/Z7omJz0Uhu+VRc1oPO1H8JCkpBd1qy4pJXMzWRrnZehOyjGDMBbSTUDhM68/NBXls=
