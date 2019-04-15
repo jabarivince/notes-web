@@ -6,6 +6,7 @@ node_js:
 sudo: required
 
 cache:
+  npm: true
   directories:
   - node_modules
 
