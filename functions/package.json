@@ -1,0 +1,23 @@
+{
+  "name": "functions",
+  "version": "1.0.0",
+  "description": "Backend to The Note App's website",
+  "main": "index.js",
+  "scripts": {
+    "serve": "firebase serve --only functions",
+    "shell": "firebase experimental:functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "nodemailer": "^4.0.1",
+    "firebase-admin": "~7.1.1",
+    "firebase-functions": "^2.2.1"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "author": "Jabari Dash",
+  "license": "ISC"
+}
