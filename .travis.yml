@@ -15,4 +15,4 @@ before_script:
 script:
   - npm test
   - npm run build
-  - firebase deploy --only hosting,functions --token "${FIREBASE_TOKEN}"
+  - firebase deploy --only hosting --token "${FIREBASE_TOKEN}"
