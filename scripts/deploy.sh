@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-if [[ $TRAVIS_BRANCH != 'master' ]] then
+if [[ $TRAVIS_BRANCH != 'master' ]]; then
   echo "Not deploying because this is a not the master branch"
   exit 0
 fi
