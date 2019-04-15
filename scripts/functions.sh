@@ -1,3 +1,4 @@
+#!/bin/bash
 set -e
 
 cd ${TRAVIS_BUILD_DIR}/functions
