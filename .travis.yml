@@ -17,4 +17,4 @@ before_script:
 script:
   - ./scripts/functions.sh
   - ./scripts/hosting.sh
-  - ./scripst/deploy.sh
+  - ./scripts/deploy.sh
