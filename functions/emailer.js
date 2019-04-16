@@ -1,7 +1,11 @@
 async function send(email) {
+  save(email)
 
-  // TODO: Implement sending email here!
   console.log(`to: ${email.to}, subject: ${email.subject}, body: ${email.body}`)
+}
+
+function save(email) {
+  // TODO: Store email in firebase datastore
 }
 
 module.exports = {
