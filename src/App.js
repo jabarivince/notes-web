@@ -1,13 +1,9 @@
-import React, { Component } from 'react';
-// import Home from './components/Home'
-// import PrivacyPolicy from './components/PrivacyPolicy'
-// import Support from './components/Support'
+import React, { Component } from 'react'
+import Header from './components/Header'
 
 class App extends Component {
   render() {
-    return (
-      <p>hey you</p>
-    );
+    return <Header />
   }
 }
 
