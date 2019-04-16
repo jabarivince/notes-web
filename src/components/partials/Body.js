@@ -13,9 +13,10 @@ class Body extends Component {
           <Route path='/privacy' component={PrivacyPolicy}/>
           <Route path='/support' component={Support}/>
         </Switch>
+
       </main>
     )
   }
 }
 
-export default Body;
+export default Body
