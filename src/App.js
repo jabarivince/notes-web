@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Home from './components/Home'
-import PrivacyPolicy from './components/PrivacyPolicy'
-import Support from './components/Support'
+// import Home from './components/Home'
+// import PrivacyPolicy from './components/PrivacyPolicy'
+// import Support from './components/Support'
 
 class App extends Component {
   render() {
     return (
-      <p>hey there</p>
+      <p>hey you</p>
     );
   }
 }
