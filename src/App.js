@@ -1,14 +1,18 @@
-import React, { Component } from 'react';
-// import Home from './components/Home'
-// import PrivacyPolicy from './components/PrivacyPolicy'
-// import Support from './components/Support'
+import { BrowserRouter as Router } from "react-router-dom";
+import React, { Component } from 'react'
+import Header from './components/partials/Header'
+import Body from './components/partials/Body'
+// import Footer from './components/Footer'
 
 class App extends Component {
   render() {
     return (
-      <p>hey you</p>
-    );
+      <Router>
+        <Header />
+        <Body />
+      </Router>
+    )
   }
 }
 
-export default App;
+export default App
