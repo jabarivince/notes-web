@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import privacyPolicy from '../assets/json/privacy-policy.json'
+import privacyPolicy from '../../assets/json/privacy-policy.json'
 const policy = privacyPolicy.policy
 
 class PrivacyPolicy extends Component {

@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Drawer from '@material-ui/core/Drawer';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import MenuItem from '@material-ui/core/MenuItem';
-import Support from './Support'
-import PrivacyPolicy from './PrivacyPolicy'
-import Home from './Home'
+import { withStyles } from '@material-ui/core/styles'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import MenuIcon from '@material-ui/icons/Menu'
+import Drawer from '@material-ui/core/Drawer'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import ClickAwayListener from '@material-ui/core/ClickAwayListener'
+import MenuItem from '@material-ui/core/MenuItem'
+import { NavLink } from 'react-router-dom'
 
 const styles = {
   root: {
@@ -25,21 +23,23 @@ const styles = {
     marginLeft: -12,
     marginRight: 20,
   },
-};
+}
 
 class Header extends Component {
-  navigate = () => {
+  navigate = (path, component) => {
     this.handleDrawerClose()
-    console.log("NAVIGATING")
+
+    console.log(path);
+    console.log(component)
   }
 
   handleDrawerOpen = () => {
-    this.setState({ drawerIsOpen: true });
-  };
+    this.setState({ drawerIsOpen: true })
+  }
 
   handleDrawerClose = () => {
-    this.setState({ drawerIsOpen: false });
-  };
+    this.setState({ drawerIsOpen: false })
+  }
 
   constructor(props) {
     super(props)
@@ -47,11 +47,6 @@ class Header extends Component {
 
     this.state = {
       drawerIsOpen: false,
-      routes: [
-        {path: "/home", component: Home},
-        {path: "/privacy", component: PrivacyPolicy},
-        {path: "/support", component: Support}
-      ]
     }
   }
 
@@ -80,20 +75,19 @@ class Header extends Component {
               <ChevronLeftIcon />
             </IconButton>
           </div>
-          <MenuItem onClick={this.navigate}>Home</MenuItem>
-          <MenuItem onClick={this.navigate}>Privacy Policy</MenuItem>
-          <MenuItem onClick={this.navigate}>Support</MenuItem>
+
+          <MenuItem component={NavLink} to="/" onClick={this.handleDrawerClose}>Home</MenuItem>
+          <MenuItem component={NavLink} to="/privacy" onClick={this.handleDrawerClose}>Privacy Policy</MenuItem>
+          <MenuItem component={NavLink} to="/support" onClick={this.handleDrawerClose}>Support</MenuItem>
         </Drawer>
       </ClickAwayListener>
-
-      <PrivacyPolicy />
     </div>
-    );
+    )
   }
 }
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+}
 
-export default withStyles(styles)(Header);
+export default withStyles(styles)(Header)
