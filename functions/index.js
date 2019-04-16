@@ -8,19 +8,42 @@ const app       = express()
 
 admin.initializeApp()
 
+app.use(cors())
 app.use(parser.json())
 app.use(parser.urlencoded({ extended: false }))
 app.post('/contact', sendEmail)
-app.use(handleError)
+app.use(handleCustomError)
+app.use(handleUnexpectedError)
 
-function handleError(err, req, res, next) {
+function send(res, payload) {
+  res.status(payload.code).json(payload)
+}
+
+function handleCustomError(err, req, res, next) {
   console.error(err.stack)
 
-  const response = {
-    message: 'Something went wrong!'
+  if (false) {
+    const body = {
+      title: 'Not accepted',
+      message: err.message,
+      code: 406
+    }
+
+    send(res, body)
+
+  } else {
+    next(err)
+  }
+}
+
+function handleUnexpectedError(err, req, res, next) {
+  const body = {
+    title: 'Internal server error',
+    message: 'Something went wrong!',
+    code: 500
   }
 
-  res.status(500).send(response)
+  send(res, body)
 }
 
 function sendEmail(req, res, next) {
