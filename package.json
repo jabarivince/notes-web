@@ -7,9 +7,12 @@
     "@material-ui/icons": "^3.0.2",
     "functions": "file:functions",
     "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
+    "react-transition-group": "^4.0.0",
+    "styled-components": "^4.2.0",
     "typeface-roboto": "0.0.54"
   },
   "scripts": {

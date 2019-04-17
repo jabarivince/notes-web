@@ -1,4 +1,4 @@
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom"
 import React, { Component } from 'react'
 import Header from './components/partials/Header'
 import Body from './components/partials/Body'

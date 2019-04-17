@@ -3,9 +3,9 @@
   "summary": "This privacy notice discloses the privacy practices of The Note App. This privacy notice applies solely to information collected by The Note App.",
   "policy": {
     "notice": "The Note App stores notes, their titles, as well as metadata such as time of creation and last edit date locally on the device. Neither notes nor associated metadata is stored remotely nor sent to our servers. No personal user data is stored on the device nor sent from the device to our servers. Anonymous user interaction information such as button presses, general geographic location, and operating system version is recorded for the purpose of evaluating application performance and stability.",
-    "choice": "There is no need to opt in or opt out as no personal data is collected.",
-    "access": "Users are able accesss all of the information that they produce such as notes as they are stored locally on their device. Users do not have access to anonymous analytics data.",
-    "security": "All note-related information is stored and encrypted on the device. All metrics and analytics are anonymous and sent encrypted and sent securely over the HTTPS protocol.",
-    "redress": "If you feel that The Note App is not fulfilling this privacy notice, please contact us with your concerns at notes.jabaridash@gmail.com"
+    "choice": "No personal data is collected. There is no need to opt in or opt out.",
+    "access": "Users are able to accesss all of the data that they produce such as notes. Users do not have access to anonymous analytics data.",
+    "security": "All note-related information is stored and encrypted on the device. All metrics and analytics are anonymous, encrypted, and sent securely over the HTTPS protocol.",
+    "redress": "If you feel that The Note App is not fulfilling this privacy notice, please contact us via the support page."
   }
 }

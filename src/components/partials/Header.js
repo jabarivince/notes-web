@@ -59,7 +59,7 @@ class Header extends Component {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" color="inherit" className={this.classes.grow}>
-            Notes
+            The Note App
           </Typography>
         </Toolbar>
       </AppBar>
