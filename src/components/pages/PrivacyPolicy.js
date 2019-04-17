@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 import privacyPolicy from '../../assets/json/privacy-policy.json'
 const policy = privacyPolicy.policy
 
@@ -25,6 +26,8 @@ class PrivacyPolicy extends Component {
 
         <h3>Redress</h3>
         <p>{policy.redress}</p>
+
+        <p>Visit our <NavLink to="/support" >support page.</NavLink></p>
       </div>
     );
   }
