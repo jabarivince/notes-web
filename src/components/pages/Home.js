@@ -15,7 +15,7 @@ class Home extends Component {
         <p>A basic note-taking app that you can download by tapping below!</p>
 
         <Row style={{justifyContent: 'center'}}>
-          <Button variant="contained" color="primary" disabled={true}>
+          <Button variant="contained" color="primary" disabled>
             Get the app
             <GetAppIcon className='centered'></GetAppIcon>
           </Button>

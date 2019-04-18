@@ -18,12 +18,15 @@ class Support extends Component {
 
       fields: {
         email: {
+          valid: false,
           errorText: 'Example: first.last@email.com'
         },
         comments: {
+          valid: false,
           errorText: 'This field must not be empty'
-        }
-      }
+        },
+      },
+      disabled: false
     }
 
     this.message = "Share your feedback with us, and we'll get back to you soon!"
@@ -51,12 +54,19 @@ class Support extends Component {
   }
 
   showSuccess = (response) => {
-    console.log(response)
+    // Show success toast
+    this.clearForm()
   }
 
   handleError = (error) => {
-    // Send to firebase???
+    // Send error to firebase
+    // Show error toast
+    // DO NOT CLEAR THE FORM
     console.error(error)
+  }
+
+  clearForm = () => {
+    this.form.reset()
   }
 
   render() {
@@ -64,7 +74,7 @@ class Support extends Component {
       <div>
         <p>{this.message}</p>
 
-        <form autoComplete="off">
+        <form autoComplete="off" ref={element => this.form = element}>
           <TextField
             fullWidth
             id="first-name-text-field"
@@ -114,7 +124,11 @@ class Support extends Component {
           />
 
           <Row style={{justifyContent: 'center'}}>
-            <Button variant="contained" color="primary" onClick={this.send}>
+            <Button
+              disabled={this.state.disabled}
+              variant="contained"
+              color="primary"
+              onClick={this.send}>
               Send
               <MailIcon></MailIcon>
             </Button>
