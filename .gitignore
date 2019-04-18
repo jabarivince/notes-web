@@ -25,3 +25,4 @@ yarn-error.log*
 node_modules
 .firebase
 firebase-debug.log
+.runtimeconfig.json
