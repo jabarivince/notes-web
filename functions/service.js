@@ -10,7 +10,16 @@ const transporter = nodemailer.createTransport({
   }
 })
 
+class CustomError extends Error {
+  constructor() {
+    super()
+    this.messages = []
+  }
+}
+
 function process(email) {
+  validate(email)
+
   save(email)
   .then(send)
   .catch(report)
@@ -18,6 +27,33 @@ function process(email) {
 
 function report(error) {
   console.error(error)
+}
+
+function validate(email) {
+  let messages = []
+
+  if (!email.email) {
+    messages.push('Email field must not ne empty')
+  }
+
+  if (!email.body) {
+    messages.push('Email body must not be empty')
+  }
+
+  if (messages.length > 0) {
+    const error = new CustomError()
+
+    error.messages = messages
+    throw error
+  }
+
+  return email
+}
+
+async function save(email) {
+  console.info('saving')
+
+  return email
 }
 
 async function send(email) {
@@ -45,13 +81,8 @@ async function send(email) {
   return email
 }
 
-async function save(email) {
-  console.info('saving')
-
-  return email
-}
-
 module.exports = {
   process,
-  report
+  report,
+  CustomError
 }
