@@ -3,7 +3,7 @@ import { Row } from 'react-bootstrap'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import MailIcon from '@material-ui/icons/Mail'
-import HTTPService from '../../services/HttpService'
+import SupportService from '../../services/SupportService'
 
 class Support extends Component {
   constructor(props) {
@@ -14,7 +14,16 @@ class Support extends Component {
       lastName: "",
       email: "",
       subject: "",
-      body: ""
+      body: "",
+
+      fields: {
+        email: {
+          errorText: 'Example: first.last@email.com'
+        },
+        comments: {
+          errorText: 'This field must not be empty'
+        }
+      }
     }
 
     this.message = "Share your feedback with us, and we'll get back to you soon!"
@@ -35,7 +44,19 @@ class Support extends Component {
       body: this.state.body
     }
 
-    HTTPService.send(payload)
+    SupportService
+    .sendFeedback(payload)
+    .then(this.showSuccess)
+    .catch(this.handleError)
+  }
+
+  showSuccess = (response) => {
+    console.log(response)
+  }
+
+  handleError = (error) => {
+    // Send to firebase???
+    console.error(error)
   }
 
   render() {
@@ -66,6 +87,7 @@ class Support extends Component {
             id="email-text-field"
             label="Email"
             margin="normal"
+            helperText={this.state.fields.email.errorText}
             onChange={this.handleChange('email')}
           />
 
@@ -87,6 +109,7 @@ class Support extends Component {
             rows={5}
             rowsMax={10}
             variant="outlined"
+            helperText={this.state.fields.comments.errorText}
             onChange={this.handleChange('body')}
           />
 
@@ -98,7 +121,6 @@ class Support extends Component {
           </Row>
         </form>
       </div>
-
     );
   }
 }
