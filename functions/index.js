@@ -19,11 +19,18 @@ function send(res, payload) {
 }
 
 function handleUnexpectedError(error, req, res, next) {
-  const body = {
+  let body = {
     title: 'Internal server error',
     message: 'Something went wrong!',
+    messages: [],
     body: req.body,
     code: 500
+  }
+
+  if (error instanceof service.CustomError) {
+    body.title = 'Bad request'
+    body.messages = error.messages
+    body.code = 406
   }
 
   service.report(error)
