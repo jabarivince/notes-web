@@ -1,7 +1,11 @@
-const nodemailer = require('nodemailer')
-const functions = require('firebase-functions')
-const config = functions.config()
-const user = config.email.user
+const nodemailer  = require('nodemailer')
+const validator   = require("email-validator")
+const functions   = require('firebase-functions')
+const firebase    = require('firebase-admin')
+firebase.initializeApp()
+const config      = functions.config()
+const firestore   = firebase.firestore()
+const db          = firestore.collection('feedback')
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -11,9 +15,14 @@ const transporter = nodemailer.createTransport({
 })
 
 class CustomError extends Error {
-  constructor() {
+  constructor(messages) {
     super()
-    this.messages = []
+
+    if (!Array.isArray(messages)) {
+      throw new Error('Argument "messages" must be of type Array')
+    }
+
+    this.messages = messages
   }
 }
 
@@ -30,55 +39,44 @@ function report(error) {
 }
 
 function validate(email) {
-  let messages = []
-
-  if (!email.email) {
-    messages.push('Email field must not ne empty')
+  if (!email) {
+    throw new CustomError(['Email must not be null or undefined'])
   }
 
-  if (!email.body) {
-    messages.push('Email body must not be empty')
-  }
+  const messages = [
+    {condition: !email.email, message: 'Email field must not ne empty'},
+    {condition: !validator.validate(email.email), message: 'Email must be a valid email. For example, some@email.com'},
+    {condition: !email.body, message: 'Email body must not be empty'},
+  ]
+  .filter(entry => entry.condition)
+  .map(entry => entry.message)
 
   if (messages.length > 0) {
-    const error = new CustomError()
-
-    error.messages = messages
-    throw error
+    throw new CustomError(messages)
   }
 
   return email
 }
 
-async function save(email) {
-  console.info('saving')
-
-  return email
+function save(email) {
+  return db.add(email)
+           .then(() => email)
+           .catch(report)
 }
 
-async function send(email) {
-  const options = {
-    from: user,
-    to: user,
+function send(email) {
+  return transporter.sendMail({
+    from: config.email.user,
+    to: config.email.user,
     subject: `[notes-user-feedback]: ${email.subject}`,
     text: `
       Email: ${email.email}
-      First Name: ${email.firstName || ''}
-      Last Name: ${email.lastName || ''}
+      First Name: ${email.firstName}
+      Last Name: ${email.lastName}
       Subject: ${email.subject}
       Body: ${email.body}
     `
-  }
-
-  transporter.sendMail(options, (error, info) => {
-    if (error) {
-      report(error)
-    } else {
-      console.info('Email sent: ' + info.response);
-    }
   })
-
-  return email
 }
 
 module.exports = {

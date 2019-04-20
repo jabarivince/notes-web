@@ -1,32 +1,14 @@
 import React, { Component } from 'react'
 import privacyPolicy from '../../assets/json/privacy-policy.json'
-const policy = privacyPolicy.policy
 
+const policy = privacyPolicy.policy
 const sections = [
-  {
-    title: privacyPolicy.title,
-    body: privacyPolicy.summary
-  },
-  {
-    title: 'Notice',
-    body: policy.notice
-  },
-  {
-    title: 'Choice',
-    body: policy.choice
-  },
-  {
-    title: 'Access',
-    body: policy.access
-  },
-  {
-    title: 'Security',
-    body: policy.security
-  },
-  {
-    title: 'Redress',
-    body: policy.redress
-  }
+  {title: privacyPolicy.title,body: privacyPolicy.summary},
+  {title: 'Notice', body: policy.notice},
+  {title: 'Choice', body: policy.choice},
+  {title: 'Access', body: policy.access},
+  {title: 'Security', body: policy.security},
+  {title: 'Redress', body: policy.redress}
 ]
 
 function policySection(key, section) {

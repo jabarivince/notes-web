@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - '10.1'
+  - '8.0'
 
 sudo: required
 
@@ -17,4 +17,6 @@ before_script:
 script:
   - ./scripts/functions.sh
   - ./scripts/hosting.sh
+
+after_success:
   - ./scripts/deploy.sh
