@@ -17,17 +17,17 @@ class Support extends Component {
       lastName: "",
       email: "",
       subject: "",
-      body: "",
+      body: ""
+    }
 
-      fields: {
-        email: {
-          valid: false,
-          errorText: 'Email but be valid. Example: first.last@email.com'
-        },
-        comments: {
-          valid: false,
-          errorText: 'This field must not be empty'
-        }
+    this.fields = {
+      email: {
+        valid: false,
+        errorText: 'Email but be valid. Example: first.last@email.com'
+      },
+      comments: {
+        valid: false,
+        errorText: 'This field must not be empty'
       }
     }
 
@@ -40,6 +40,15 @@ class Support extends Component {
       this.formIsDisabled
     )
   }
+
+  // handleChange(name) {
+  //   return (event) => {
+  //     this.setState(
+  //       {[name]: event.target.value},
+  //       this.formIsDisabled
+  //     )
+  //   }
+  // }
 
   send = () => {
     const payload = {
@@ -69,6 +78,7 @@ class Support extends Component {
 
   clearForm = () => {
     this.setState({
+      disabled: true,
       firstName: '',
       lastName: '',
       email: '',
@@ -122,9 +132,10 @@ class Support extends Component {
             required
             fullWidth
             id="email-text-field"
+            ref="email"
             label="Email"
             margin="normal"
-            helperText={this.state.fields.email.errorText}
+            helperText={this.fields.email.errorText}
             onChange={this.handleChange('email')}
           />
 
@@ -146,7 +157,7 @@ class Support extends Component {
             rows={5}
             rowsMax={10}
             variant="outlined"
-            helperText={this.state.fields.comments.errorText}
+            helperText={this.fields.comments.errorText}
             onChange={this.handleChange('body')}
           />
 
