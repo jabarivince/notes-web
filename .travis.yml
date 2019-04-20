@@ -17,4 +17,10 @@ before_script:
 script:
   - ./scripts/functions.sh
   - ./scripts/hosting.sh
-  - ./scripts/deploy.sh
+  # - ./scripts/deploy.sh
+
+deploy:
+  provider: firebase
+  token:
+    secure: "bGxJ1KW1pwigbHReipUjrX3Fez13Nv3fqXLtXM1jv1WFvtI8omMAoOoywPAbSeu9u6GpAgOHnpgGLpgDz7GU8klow6RsJ25lR8EEhF/QTYvL6DSLY4thsOlBKAjLKKyarPLs4AWR9OmJMd0mZwMJ6d9AFdYK4+3kGUJoNfZht+/jXdf1gvXpQkaJlPKM3Gjy1lPB14M2ClqsFOkr2wmVsMKF9xJxc0rTQmZk2a0/jeDXsheO2l8awjUPsx/NaxAyqfaSdLXpWU82kei/S31MXSDQeYaFo7RqS+fK0zKTCGFCDh1tQqNmh+GrVsraU2ArM+KX6ItdkQObQbDubytKRlaxM4fOaTHoECe9QtlyYGCuGJG7OMQPjcunrTDPzUa8p10NbG6HIuOuqe9QEKVxvBt6xX0VAVnSaZVAATrHM6ZYRveTTNnj27QAc3EGPTv+LxKv98kLoex6tDjJUKih7p/GrnLUfzkTfuwJoPi+LEi9/Y58BMT44k34mJyPNHniSgRfn6nrmRWgjrXRu7zsHlyDsRpySxNqYfuxbTCEUr3snklTG28f+yr3l2+JtfOS/vrqgp3g9qZ4C7ckeBrRDVDphqyzt83X+fC+oW3Kl92YRFbWKnD/231tfxmTW9oIgquz96dIyNUwDHFsOFBrFNJvB/SDqOQRPNxcIHL1UZA="
+  message: "${TRAVIS_COMMIT_MESSAGE}"
