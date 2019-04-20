@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -o xtrace
 
 # if [[ $TRAVIS_BRANCH != 'master' ]]; then
 #   echo "Not deploying because this is a not the master branch"
