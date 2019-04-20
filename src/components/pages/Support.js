@@ -41,39 +41,22 @@ class Support extends Component {
     )
   }
 
-  // handleChange(name) {
-  //   return (event) => {
-  //     this.setState(
-  //       {[name]: event.target.value},
-  //       this.formIsDisabled
-  //     )
-  //   }
-  // }
-
   send = () => {
-    const payload = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      email: this.state.lastName,
-      subject: this.state.subject,
-      body: this.state.body
-    }
-
     SupportService
-    .sendFeedback(payload)
+    .sendFeedback(this.state)
     .then(this.showSuccess)
     .catch(this.handleError)
   }
 
   showSuccess = (response) => {
     AlertService
-    .success(response)
+    .success({title: 'Success!', message: 'Message recieved!'})
     .then(this.clearForm)
   }
 
   handleError = (error) => {
     AlertService
-    .error(error)
+    .error({title: 'Oops!', message: 'Something went wrong!'})
   }
 
   clearForm = () => {
