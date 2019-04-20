@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer')
 const functions = require('firebase-functions')
+var validator = require("email-validator")
 const config = functions.config()
-const user = config.email.user
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -32,12 +32,22 @@ function report(error) {
 function validate(email) {
   let messages = []
 
-  if (!email.email) {
-    messages.push('Email field must not ne empty')
-  }
+  if (!email) {
+    messages.push('Email must not be null or undefined')
 
-  if (!email.body) {
-    messages.push('Email body must not be empty')
+  } else {
+
+    if (!email.email) {
+      messages.push('Email field must not ne empty')
+    }
+
+    if (!validator.validate(email.email)) {
+      messages.push('Email must be a valid email. For example, some@email.com')
+    }
+
+    if (!email.body) {
+      messages.push('Email body must not be empty')
+    }
   }
 
   if (messages.length > 0) {
@@ -51,12 +61,12 @@ function validate(email) {
 }
 
 async function save(email) {
-  console.info('saving')
 
   return email
 }
 
 async function send(email) {
+  const user = config.email.user
   const options = {
     from: user,
     to: user,
@@ -73,8 +83,6 @@ async function send(email) {
   transporter.sendMail(options, (error, info) => {
     if (error) {
       report(error)
-    } else {
-      console.info('Email sent: ' + info.response);
     }
   })
 
