@@ -3,7 +3,7 @@ language: node_js
 node_js:
   - '8.0'
 
-sudo: required
+# sudo: required
 
 # cache:
 #   npm: true
@@ -12,11 +12,18 @@ sudo: required
 #   - functions/node_modules
 
 before_script:
-  - ./scripts/dependencies.sh
+  - npm install -g firebase-tools@latest
+  - npm install
+  - cd functions
+  - npm install
 
 script:
-  - ./scripts/functions.sh
-  - ./scripts/hosting.sh
+  - npm test
+  - cd ..
+  - npm test
+
+before_deploy:
+  - npm run build
 
 deploy:
   skip_cleanup: true
