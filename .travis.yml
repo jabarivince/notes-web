@@ -17,6 +17,4 @@ before_script:
 script:
   - ./scripts/functions.sh
   - ./scripts/hosting.sh
-
-after_success:
   - ./scripts/deploy.sh
