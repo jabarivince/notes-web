@@ -16,7 +16,7 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "firebase-admin": "~7.1.1",
-    "firebase-functions": "^2.2.1",
+    "firebase-functions": "^2.3.0",
     "jest": "^24.7.1",
     "nodemailer": "^4.0.1",
     "supertest": "^4.0.2"
@@ -27,7 +27,6 @@
   "author": "Jabari Dash",
   "license": "ISC",
   "devDependencies": {
-    "firebase-functions-test": "^0.1.6",
-    "mocha": "^6.1.4"
+    "firebase-functions-test": "^0.1.6"
   }
 }

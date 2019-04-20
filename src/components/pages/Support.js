@@ -54,11 +54,12 @@ class Support extends Component {
   }
 
   showSuccess = (response) => {
-    // Show success toast
+    alert('success')
     this.clearForm()
   }
 
   handleError = (error) => {
+    alert('an error occurred')
     // Send error to firebase
     // Show error toast
     // DO NOT CLEAR THE FORM

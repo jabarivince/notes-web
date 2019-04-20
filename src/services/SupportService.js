@@ -6,7 +6,7 @@ const SupportService = {
     return HTTPService
     .post(api.url.contact, feedback)
     .then(response => console.log(response))
-    .catch(error => console.error(error))
+    .catch(error => {throw error})
   }
 }
 
