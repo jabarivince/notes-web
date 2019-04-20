@@ -1,5 +1,5 @@
 const nodemailer  = require('nodemailer')
-const validator   = require("email-validator")
+// const validator   = require("email-validator")
 const functions   = require('firebase-functions')
 const firebase    = require('firebase-admin')
 firebase.initializeApp()
@@ -45,7 +45,7 @@ function validate(email) {
 
   const messages = [
     {condition: !email.email, message: 'Email field must not ne empty'},
-    {condition: !validator.validate(email.email), message: 'Email must be a valid email. For example, some@email.com'},
+    // {condition: !validator.validate(email.email), message: 'Email must be a valid email. For example, some@email.com'},
     {condition: !email.body, message: 'Email body must not be empty'},
   ]
   .filter(entry => entry.condition)

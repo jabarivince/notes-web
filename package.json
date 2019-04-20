@@ -6,7 +6,6 @@
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
     "axios": "^0.18.0",
-    "email-validator": "^2.0.4",
     "functions": "file:functions",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.8",
