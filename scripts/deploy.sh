@@ -11,4 +11,4 @@ if [[ $TRAVIS_PULL_REQUEST != 'false' ]]; then
   exit 0
 fi
 
-firebase deploy --token "${FIREBASE_TOKEN}" || exit 1
+firebase deploy --token "${FIREBASE_TOKEN}"
