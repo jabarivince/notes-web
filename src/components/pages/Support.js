@@ -3,13 +3,16 @@ import { Row } from 'react-bootstrap'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import MailIcon from '@material-ui/icons/Mail'
+import AlertService from '../../services/AlertService'
 import SupportService from '../../services/SupportService'
+import EmailValidator from 'email-validator'
 
 class Support extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
+      disabled: true,
       firstName: "",
       lastName: "",
       email: "",
@@ -19,23 +22,23 @@ class Support extends Component {
       fields: {
         email: {
           valid: false,
-          errorText: 'Example: first.last@email.com'
+          errorText: 'Email but be valid. Example: first.last@email.com'
         },
         comments: {
           valid: false,
           errorText: 'This field must not be empty'
-        },
-      },
-      disabled: false
+        }
+      }
     }
 
     this.message = "Share your feedback with us, and we'll get back to you soon!"
   }
 
   handleChange = (name) => (event) => {
-    this.setState({
-      [name]: event.target.value,
-    })
+    this.setState(
+      {[name]: event.target.value},
+      this.formIsDisabled
+    )
   }
 
   send = () => {
@@ -54,20 +57,43 @@ class Support extends Component {
   }
 
   showSuccess = (response) => {
-    alert('success')
-    this.clearForm()
+    AlertService
+    .success(response)
+    .then(this.clearForm)
   }
 
   handleError = (error) => {
-    alert('an error occurred')
-    // Send error to firebase
-    // Show error toast
-    // DO NOT CLEAR THE FORM
-    console.error(error)
+    AlertService
+    .error(error)
   }
 
   clearForm = () => {
+    this.setState({
+      firstName: '',
+      lastName: '',
+      email: '',
+      subject: '',
+      body: ''
+    })
+
     this.form.reset()
+  }
+
+  formIsDisabled = () => {
+    const emailIsValid = EmailValidator.validate(this.state.email)
+    const bodyIsValid = this.isTruthy(this.state.body)
+
+    this.setState({
+      disabled: !(emailIsValid && bodyIsValid)
+    })
+  }
+
+  isTruthy = (arg) => {
+    if (arg) {
+      return true
+    } else {
+      return false
+    }
   }
 
   render() {
