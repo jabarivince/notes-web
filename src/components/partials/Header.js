@@ -28,9 +28,6 @@ const styles = {
 class Header extends Component {
   navigate = (path, component) => {
     this.handleDrawerClose()
-
-    console.log(path);
-    console.log(component)
   }
 
   handleDrawerOpen = () => {

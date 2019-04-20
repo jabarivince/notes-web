@@ -1,4 +1,4 @@
-const ftest = require('firebase-functions-test')()
+const ftest    = require('firebase-functions-test')()
 ftest.mockConfig({
   email: {
     user: '',
@@ -7,9 +7,7 @@ ftest.mockConfig({
 })
 
 const request = require('supertest')
-const sinon = require('sinon')
-const functions = require('./index')
-const app = functions.app
+const app     = require('./index').app
 
 describe('/contact', () => {
   const endpoint = '/contact'
@@ -92,11 +90,11 @@ describe('/contact', () => {
     })
   })
 
-  test('POST bare minimum (email and body), recieve 200', done => {
+  test('POST bare minimum (email and body), recieve 201', done => {
     request(app)
     .post(endpoint)
     .send({email: 'email@email.com', body: 'body'})
-    .expect(200)
+    .expect(201)
     .end((err, res) => {
       if (err) {
         return done(err)
@@ -105,7 +103,7 @@ describe('/contact', () => {
     })
   })
 
-  test('POST all fields, recieve 200', done => {
+  test('POST all fields, recieve 201', done => {
     const payload = {
       firstName: 'firstName',
       lastName: 'lastName',
@@ -117,7 +115,7 @@ describe('/contact', () => {
     request(app)
     .post(endpoint)
     .send(payload)
-    .expect(200)
+    .expect(201)
     .end((err, res) => {
       if (err) {
         return done(err)

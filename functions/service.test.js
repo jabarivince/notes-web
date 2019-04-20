@@ -1,3 +1,4 @@
+const sinon = require('sinon')
 const ftest = require('firebase-functions-test')()
 ftest.mockConfig({
   email: {
