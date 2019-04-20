@@ -8,12 +8,13 @@
     ],
     "rewrites": [
       {
+        "source": "/contact",
+        "function": "app"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
     ]
-  },
-  "functions": {
-    "source": "functions/"
   }
 }
