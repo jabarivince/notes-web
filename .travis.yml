@@ -17,7 +17,6 @@ before_script:
 script:
   - ./scripts/functions.sh
   - ./scripts/hosting.sh
-  # - ./scripts/deploy.sh
 
 deploy:
   skip_cleanup: true
