@@ -67,13 +67,13 @@ class Support extends Component {
 
   showSuccess = (response) => {
     AlertService
-    .success(response)
+    .success({title: 'Success', message: 'Your message was successfully sent'})
     .then(this.clearForm)
   }
 
   handleError = (error) => {
     AlertService
-    .error(error)
+    .error({title: 'Oops!', message: 'Oops, something went wrong!'})
   }
 
   clearForm = () => {
