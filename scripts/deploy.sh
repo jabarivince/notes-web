@@ -12,5 +12,4 @@ if [[ $TRAVIS_PULL_REQUEST != 'false' ]]; then
   exit 0
 fi
 
-firebase use default --token $FIREBASE_TOKEN
-firebase deploy --non-interactive --only functions --debug
+firebase deploy --token "$FIREBASE_TOKEN" --non-interactive
