@@ -5,11 +5,11 @@ node_js:
 
 sudo: required
 
-cache:
-  npm: true
-  directories:
-  - node_modules
-  - functions/node_modules
+# cache:
+  # npm: true
+  # directories:
+  # - node_modules
+  # - functions/node_modules
 
 before_script:
   - ./scripts/dependencies.sh
@@ -17,6 +17,4 @@ before_script:
 script:
   - ./scripts/functions.sh
   - ./scripts/hosting.sh
-
-after_success:
   - ./scripts/deploy.sh
