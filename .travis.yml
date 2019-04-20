@@ -28,4 +28,3 @@ deploy:
   script: firebase deploy --token "$FIREBASE_TOKEN" --non-interactive
   on:
     branch: master
-  message: "${TRAVIS_COMMIT_MESSAGE}"
