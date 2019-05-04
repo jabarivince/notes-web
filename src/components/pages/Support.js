@@ -31,7 +31,8 @@ class Support extends Component {
       }
     }
 
-    this.message = "Share your feedback with us, and we'll get back to you soon!"
+    this.title = "Share your feedback"
+    this.message = "We'll get back to you soon!"
   }
 
   handleChange = (name) => (event) => {
@@ -92,6 +93,7 @@ class Support extends Component {
   render() {
     return (
       <div>
+        <h3>{this.title}</h3>
         <p>{this.message}</p>
 
         <form autoComplete="off" ref={element => this.form = element}>

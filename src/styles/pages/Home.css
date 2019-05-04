@@ -9,5 +9,10 @@
   margin-right: auto;
 
   /* Limit image size */
-  max-width:75%;
+  max-width: 75%;
+}
+
+.row {
+  /* Put space between the rows */
+  margin-bottom: 2%;
 }
