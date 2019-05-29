@@ -34,28 +34,25 @@ function getScreenShots() {
   return (
     <div>
       <h3 align="center">Screenshots from the Note App </h3>
-    <CarouselProvider
-        naturalSlideWidth={100}
-        naturalSlideHeight={150}
-        totalSlides={3}
-        
-      >
+    <CarouselProvider naturalSlideWidth={100} naturalSlideHeight={150} totalSlides={3}>
+    <ButtonBack>Back</ButtonBack>
+      <ButtonNext>Next</ButtonNext>
       <Slider>
         <Slide index={0}> 
           <img src={mainscreen} alt={'main screen'} className='icon centered'/>
           <p align="center">Main Screen</p>
         </Slide>
+
         <Slide index={1}> 
           <img src={notesWithLinks} alt={'notes with hyperlinks'} className='icon centered'/>
           <p align="center">Hyperlinks</p>
         </Slide>
+
         <Slide index={2}> 
           <img src={activeNotes} alt={'actvive notes'} className='icon centered'/>
           <p align="center">Typing Notes</p>
         </Slide>
       </Slider>
-      <ButtonBack>Back</ButtonBack>
-      <ButtonNext>Next</ButtonNext>
       </CarouselProvider>
     </div>
     
