@@ -35,8 +35,10 @@ function getScreenShots() {
     <div>
       <h3 align="center">Screenshots from the Note App </h3>
     <CarouselProvider naturalSlideWidth={100} naturalSlideHeight={150} totalSlides={3}>
-    <ButtonBack>Back</ButtonBack>
+    
+      <ButtonBack>Back</ButtonBack>
       <ButtonNext>Next</ButtonNext>
+
       <Slider>
         <Slide index={0}> 
           <img src={mainscreen} alt={'main screen'} className='icon centered'/>
