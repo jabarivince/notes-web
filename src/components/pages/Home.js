@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
 import { Row, Col } from 'react-bootstrap';
 import Button from '@material-ui/core/Button'
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 import GetAppIcon from '@material-ui/icons/GetApp'
 import '../../styles/pages/Home.css'
-import icon from '../../assets/img/icon.png'
+import mainscreen from '../../assets/img/screenshots/main.jpg'
+import notesWithLinks from '../../assets/img/screenshots/links.jpg'
+import activeNotes from '../../assets/img/screenshots/active.jpg'
+
 
 function getWelcome() {
   return (
     <div>
       <h3>Welcome to the Note App!</h3>
       <p>A basic note-taking app that you can download by tapping below!</p>
-      <img src={icon} alt={'notes icon'} className='icon centered'/>
     </div>
   )
 }
@@ -26,10 +30,43 @@ function getButton() {
   )
 }
 
+function getScreenShots() {
+  return (
+    <div>
+      <h3 align="center">Screenshots from the Note App </h3>
+    <CarouselProvider
+        naturalSlideWidth={100}
+        naturalSlideHeight={150}
+        totalSlides={3}
+        
+      >
+      <Slider>
+        <Slide index={0}> 
+          <img src={mainscreen} alt={'main screen'} className='icon centered'/>
+          <p align="center">Main Screen</p>
+        </Slide>
+        <Slide index={1}> 
+          <img src={notesWithLinks} alt={'notes with hyperlinks'} className='icon centered'/>
+          <p align="center">Hyperlinks</p>
+        </Slide>
+        <Slide index={2}> 
+          <img src={activeNotes} alt={'actvive notes'} className='icon centered'/>
+          <p align="center">Typing Notes</p>
+        </Slide>
+      </Slider>
+      <ButtonBack>Back</ButtonBack>
+      <ButtonNext>Next</ButtonNext>
+      </CarouselProvider>
+    </div>
+    
+  )
+}
+
 function getRows() {
   const rows = [
     getWelcome(),
-    getButton()
+    getButton(),
+    getScreenShots()
   ]
 
   return rows.map((row, index) => {
