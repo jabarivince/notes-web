@@ -15,7 +15,7 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "email-validator": "^2.0.4",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "firebase-admin": "~7.1.1",
     "firebase-functions": "^2.3.0",
     "nodemailer": "^4.0.1",
