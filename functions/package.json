@@ -16,8 +16,8 @@
     "cors": "^2.8.5",
     "email-validator": "^2.0.4",
     "express": "^4.16.4",
-    "firebase-admin": "~7.1.1",
-    "firebase-functions": "^2.3.0",
+    "firebase-admin": "~11.4.1",
+    "firebase-functions": "^4.1.1",
     "nodemailer": "^4.0.1",
     "supertest": "^4.0.2"
   },
